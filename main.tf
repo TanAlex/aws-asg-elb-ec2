@@ -4,7 +4,7 @@ resource "aws_instance" "web" {
   ami             = "${data.aws_ami.ubuntu.id}"
   instance_type   = "t2.micro"
   key_name        = "${aws_key_pair.my-ssh-key.key_name}"
-
+  count             = "${var.count}"
   security_groups = [
     "${aws_security_group.allow_ssh.name}",
     #"${aws_security_group.allow_outbound.name}",
